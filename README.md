@@ -1,5 +1,5 @@
 # pmss
-pmss (Poorman's Screenshooter) is a simple front-end to screen capture utility [Scrot] (SCReen shOT). pmss lets you easily capture screenshots without having to remember various options and flags of Scrot.
+pmss (Poorman's Screenshooter) is a simple front-end to screen capture utility [Scrot]. pmss lets you easily capture screenshots without having to remember various options and flags of Scrot.
 
 
 ### Features :
@@ -13,7 +13,7 @@ pmss (Poorman's Screenshooter) is a simple front-end to screen capture utility [
 
 ### Dependencies :
 
- - Scrot - Scrot (SCReen shOT) is the only dependency of pmss. Scrot is available in repositories of almost every linux distribution out there. Use your distribution's package manager to install Scrot.
+ - Scrot - Scrot is the only dependency of pmss. Scrot is available in repositories of almost every linux distribution out there. Use your distribution's package manager to install Scrot.
 
 
 ### Installation :
