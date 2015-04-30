@@ -1,5 +1,5 @@
 # pmss
-pmss (Poorman's Screenshooter) is a simple front-end to screen capture utility [Scrot]. pmss lets you easily capture screenshots without having to remember various options and flags of Scrot.
+pmss (Poorman's Screenshooter) is a simple bash front-end to screen capture utility [Scrot]. pmss lets you easily capture screenshots without having to remember various options and flags of Scrot.
 
 
 ### Features :
