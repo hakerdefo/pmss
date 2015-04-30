@@ -1,0 +1,82 @@
+#!/bin/bash
+DIR="${HOME}/Pictures/Screenshots"
+DATE="$(date +%d%m%y-%H%M%S)"
+SHORT_NAME="Shot-${DATE}.png"
+NAME="${DIR}/${SHORT_NAME}"
+
+clear
+
+if [ ! -d "${DIR}" ]; then mkdir "${DIR}"; fi
+
+while true
+do
+
+echo -e ""
+echo -en '\e[0m'
+echo -e '\E[1;32;40m'"*************************************";
+echo -e '\E[1;32;40m'"***** Poorman's Screenshooter *****";
+echo -en '\e[0m'
+echo -e '\E[1;32;40m'"*************************************";
+echo -e ""
+echo -e '\E[1;32;40m'"Select One Of The Following Options,";
+echo -e ""
+echo -e '\E[1;32;40m'"Enter [E] To Take The Screenshot Of The Entire Screen";
+echo -e '\E[1;32;40m'"Enter [W] To Take The Screenshot Of Window In Focus";
+echo -e '\E[1;32;40m'"Enter [A] To Take The Screenshot Of Area Selected By Mouse";
+echo -e '\E[1;32;40m'"Enter [Q] To Exit";
+echo -e ""
+
+read option
+case "$option" in
+
+"E" | "e" )
+clear
+echo -e '\E[1;32;40m'"Minimize Terminal To Avoid It From Being Captured..";
+scrot -d10 -c "${NAME}"
+clear
+echo -e '\E[1;31;40m'"$SHORT_NAME Saved in '$DIR'";
+xdg-open "${NAME}"
+continue
+;;
+
+"W" | "w" )
+clear
+echo -e '\E[1;32;40m'"Minimize Terminal And Bring The Window To Be Captured In Focus..";
+scrot -u -d10 -b -c "${NAME}"
+clear
+echo -e '\E[1;31;40m'"$SHORT_NAME Saved in '$DIR'";
+xdg-open "${NAME}"
+continue
+;;
+
+"A" | "a" )
+clear
+echo -e '\E[1;32;40m'"Draw A Rectangle On The Screen And Area Inside It Will Be Captured..";
+scrot -s "${NAME}"
+clear
+echo -e '\E[1;31;40m'"$SHORT_NAME Saved in '$DIR'";
+xdg-open "${NAME}"
+continue
+;;
+
+"Q" | "q" )
+clear
+echo -e '\E[1;32;40m'"Thanks.. Bye Bye..";
+sleep 3
+break
+;;
+
+* )
+clear
+echo -e '\E[1;31;40m'"Incorrect Option Selected";
+sleep 3
+continue
+;;
+
+esac
+done
+
+echo -en '\e[0m'
+clear
+
+exit 0
