@@ -43,5 +43,5 @@ What is screenshot utility without screenshot?!?
 This work (<span property="dct:title">pmss</span>, by [<span property="dct:title">hakerdefo</span>](https://github.com/hakerdefo/pmss)), identified by [<span property="dct:title">hakerdefo</span>](https://hakerdefo.blogspot.com), is free of known copyright restrictions.
 
 
-[scrot]:http://freecode.com/projects/scrot
+[Scrot]:http://freecode.com/projects/scrot
 [pmss-master]:https://github.com/hakerdefo/pmss/archive/master.zip
