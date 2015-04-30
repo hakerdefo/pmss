@@ -8,6 +8,7 @@ pmss (Poorman's Screenshooter) is a simple front-end to screen capture utility [
   - Take the screenshot of window in focus.
   - Take the screenshot of area selected by mouse.
   - Name the screenshot according to capture time.
+  - Save the screenshot in '~/Pictures/Screenshots' directory.
   - Open the screenshot in image viewer.
 
 
