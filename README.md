@@ -1,5 +1,5 @@
 # pmss
-pmss (Poorman's Screenshooter) is a simple front-end to screen capture utility [Scrot] (SCReen shOT). You can use Scrot on it's own but you will need to remember and type all the options in order to harness the power of Scrot. pmss lets you easily capture screenshots without remembering Scrot options. 
+pmss (Poorman's Screenshooter) is a simple front-end to screen capture utility [Scrot] (SCReen shOT). pmss lets you easily capture screenshots without having to remember various options and flags of Scrot.
 
 
 ### Features :
