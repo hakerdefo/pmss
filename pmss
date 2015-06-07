@@ -10,10 +10,11 @@ do
 
 echo -e ""
 echo -en '\e[0m'
-echo -e '\E[1;32;40m'"*************************************";
-echo -e '\E[1;32;40m'"***** Poorman's Screenshooter *****";
-echo -en '\e[0m'
-echo -e '\E[1;32;40m'"*************************************";
+echo -e '\E[1;32;40m'"**********************************************************";
+echo -e '\E[1;32;40m'"****************                          ****************";
+echo -e '\E[1;32;40m'"                Poorman's ** Screenshooter";
+echo -e '\E[1;32;40m'"****************                          ****************";
+echo -e '\E[1;32;40m'"**********************************************************";
 echo -e ""
 echo -e '\E[1;32;40m'"Select One Of The Following Options,";
 echo -e ""
@@ -21,6 +22,7 @@ echo -e '\E[1;32;40m'"Enter [E] To Take The Screenshot Of The Entire Screen";
 echo -e '\E[1;32;40m'"Enter [W] To Take The Screenshot Of Window In Focus";
 echo -e '\E[1;32;40m'"Enter [A] To Take The Screenshot Of Area Selected By Mouse";
 echo -e '\E[1;32;40m'"Enter [Q] To Exit";
+echo -en '\e[0m'
 echo -e ""
 
 read option
@@ -69,20 +71,20 @@ continue
 clear
 echo -e '\E[1;32;40m'"Thanks.. Bye Bye..";
 sleep 3
+echo -en '\e[0m'
+clear
 break
 ;;
 
 * )
 clear
-echo -e '\E[1;31;40m'"Incorrect Option Selected";
+echo -e '\E[1;31;40m'"Incorrect Option Selected..";
 sleep 3
+echo -en '\e[0m'
+clear
 continue
 ;;
 
 esac
 done
-
-echo -en '\e[0m'
-clear
-
 exit 0
