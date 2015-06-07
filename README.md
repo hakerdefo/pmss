@@ -33,9 +33,9 @@ $ sudo chmod a+x /usr/local/bin/pmss
 
 Open terminal, run pmss, Say cheese.
 
-What is screenshot utility without screenshot?!?
+What is a screenshot utility without a screenshot?!?
 
-![alt text](http://i.imgur.com/U1dQY8Q.png "pmss")
+![alt text](http://i.imgur.com/lrrL8tY.png "pmss")
 
 
 ### License :
