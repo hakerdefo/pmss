@@ -19,23 +19,23 @@ pmss (Poor Man's Screenshooter) is a simple bash front-end to screen capture uti
 
 ### Installation :
 
-Download [pmss-master] zip, extract it's contents and copy 'pmss' file to '/usr/local/bin/' directory,
+Download [pmss-master] zip, extract its contents and copy 'pmss' to '/usr/local/bin/' directory,
 ```sh
-$ sudo cp pmss /usr/local/bin/
+sudo cp pmss /usr/local/bin/
 ```
 Next make it executable,
 ```sh
-$ sudo chmod a+x /usr/local/bin/pmss
+sudo chmod a+x /usr/local/bin/pmss
 ```
 
 
 ### Usage :
 
-Open terminal, run pmss, Say cheese.
+Open terminal, run pmss, Say cheese!!!
 
 What is a screenshot utility without a screenshot?!?
 
-![alt text](http://i.imgur.com/lrrL8tY.png "pmss")
+![alt text](http://i.imgur.com/FeQb80D.png "pmss")
 
 
 ### License :
