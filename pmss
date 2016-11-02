@@ -2,7 +2,7 @@
 printf "\033c"
 type scrot >/dev/null 2>&1 || { printf "\033c"; echo -e ""; echo -e '\E[1;32;49m'"A required pmss dependency \"Scrot\" is not present."; echo -e '\e[1;32;49m'"\"Scrot\" is available for almost all linux distros."; echo -e '\e[1;32;49m'"Please install \"scrot\" using your package manager."; echo -e ""; tput sgr0; exit 1; }
 DIR="${HOME}/Pictures/Screenshots"
-if [ ! -d "${DIR}" ]; then mkdir "${DIR}"; fi
+if [ ! -d "${DIR}" ]; then mkdir --parents "${DIR}"; fi
 while true
 do
 tput sgr0
