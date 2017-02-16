@@ -51,7 +51,7 @@ Open terminal, run pmss, say CHEESE!!!
 
 What is a screenshot utility without a screenshot?!?
 
-![alt text](http://i.imgur.com/FeQb80D.png "pmss")
+![alt text](https://github.com/hakerdefo/pmss/blob/master/SCREENSHOT.png?raw=true "pmss")
 
 
 ## My WM hates xdotool or how I loved the original pmss :
