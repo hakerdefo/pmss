@@ -1,6 +1,6 @@
 # pmss
 
-**pmss** (Poor Man's Screenshooter) is a simple bash front-end to screen capture utility Scrot. **pmss** lets you easily capture screenshots without having to remember various options and flags of Scrot. **pmss** also utilizes power of xdotool to make the task of taking screenshots in variety of ways not only possible but enjoyable. After taking that perfect screenshot **pmss** can optionaly upload the screenshot to imgur and give you image sharing links for GitHub, Reddit, Forums, Message boards, Websites, Blogs. Of course **pmss** will also give you direct image link and a link to delete the uploaded image. What's more, **pmss** will also keep a log of all the uploaded images so you can reuse the image link(s) whenever you need them or delete the image using the delete link if need be. **pmss** also helps you manage the saved screenshots. You'll be able to clean the whole screenshots directory with a single key press.
+**pmss** (Poor Man's Screenshooter) is a simple bash front-end to screen capture utility Scrot. **pmss** lets you easily capture screenshots without having to remember various options and flags of Scrot. **pmss** also utilizes power of xdotool to make the task of taking screenshots in variety of ways not only possible but enjoyable. After taking that perfect screenshot **pmss** can optionaly upload the screenshot to imgur and give you image sharing links for GitHub, Reddit, Forums, Message boards, Websites, Blogs. Of course **pmss** will also give you direct image link and a link to delete the uploaded image. What's more, **pmss** will also keep a log of all the uploaded images so you can reuse the image links whenever you need them or remove the uploaded image using the delete link if need be. **pmss** also lets you empty the whole screenshots directory with a single key press.
 
 
 ## Features :
@@ -9,14 +9,14 @@
   - Clean mode
   - Dirty mode
  - Take the screenshot of window in focus
-  - Window below the current window
+  - Window open below the pmss window
   - Window under the mouse cursor
   - Window selected by the user
  - Take the screenshot of area selected by mouse
  - Upload the screenshot to imgur
  - Image sharing links in multiple formats
  - Image upload log
- - Manage saved screenshots
+ - Empty screenshots directory with a key press
 
 
 ## Dependencies :
@@ -35,7 +35,7 @@
 
 ## Installation :
 
-Download [pmss-master] zip, extract its contents and copy **pmss** to **/usr/local/bin/** directory,
+Download [pmss-master] zip, extract its contents into a directory, open that directory in your favorite terminal emulator and copy **pmss** to **/usr/local/bin/** directory,
 ```sh
 sudo cp pmss /usr/local/bin/
 ```
