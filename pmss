@@ -199,7 +199,21 @@ echo -e '\E[1;32;49m'"Check Your Internet Connection"
 echo -e ""
 read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 MenU
-else
+fi
+if grep -q 'success="0"' <<<"$RESPONSE"; then
+ERR_MSG2="${RESPONSE##*<error>}"
+ERR_MSG="${ERR_MSG2%%</error>*}"
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"OOPS! Something Went Wrong!"
+echo -e '\E[1;32;49m'"Upload To imgur Has Failed!"
+echo -e '\E[1;32;49m'"The Message imgur Sent Was,"
+echo -e ""
+echo -e '\E[1;32;49m'"\"$ERR_MSG\""
+echo -e ""
+read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
+MenU
+fi
 URL3="${RESPONSE##*<link>}"
 URL2="${URL3%%</link>*}"
 URL="${URL2//http:/https:}"
@@ -256,7 +270,6 @@ echo -e '\E[1;32;49m'"Delete url: "'\E[0;32;49m'"${DEL_URL}"
 echo -e '\E[1;32;49m'""
 read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 MenU
-fi
 }
 ########
 function upload_check (){
