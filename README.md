@@ -70,6 +70,12 @@ Please say CHEESE now!!!
 
 [![Public Domain Mark](http://i.creativecommons.org/p/mark/1.0/88x31.png)](http://creativecommons.org/publicdomain/mark/1.0/)  
 This work (<span property="dct:title">pmss</span>, by [<span property="dct:title">hakerdefo</span>](https://github.com/hakerdefo/pmss)), identified by [<span property="dct:title">hakerdefo</span>](https://hakerdefo.blogspot.com), is free of known copyright restrictions.
+
+
+## Credits :
+
+imgur upload function of **pmss** is based on the work of Bart Nagel & Tino Sino.
+#
 [Scrot]:http://freecode.com/projects/scrot
 [xdotool]:http://semicomplete.com/projects/xdotool
 [curl]:https://curl.haxx.se/
