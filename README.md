@@ -1,6 +1,6 @@
 # pmss
 
-**pmss** (Poor Man's Screenshooter) is a simple bash front-end to screen capture utility Scrot. **pmss** lets you easily capture screenshots without having to remember various options and flags of Scrot. **pmss** also utilizes power of xdotool to make the task of taking screenshots in variety of ways not only possible but enjoyable. After taking that perfect screenshot **pmss** can optionaly upload the screenshot to imgur and give you image sharing links for GitHub, Reddit, Forums, Message boards, Websites, Blogs. Of course **pmss** will also give you direct image link and a link to delete the uploaded image. What's more, **pmss** will also keep a log of all the uploaded images so you can reuse the image links whenever you need them or remove the uploaded image using the delete link if need be. **pmss** also lets you empty the whole screenshots directory with a single key press.
+**pmss** (Poor Man's Screenshooter) is a simple bash front-end to screen capture utility Scrot. **pmss** lets you easily capture screenshots without having to remember various options and flags of Scrot. **pmss** also utilizes power of xdotool to make the task of taking screenshots in variety of ways not only possible but enjoyable. After taking that perfect screenshot **pmss** can optionaly upload the screenshot to imgur, either anonymously or to an imgur account, and give you image sharing links for GitHub, Reddit, Forums, Message boards, Websites, Blogs. Of course **pmss** will also give you direct image link and a link to delete the uploaded image. What's more, **pmss** will also keep a log of all the anonymously uploaded images so you can reuse the image links whenever you need them or remove the uploaded image using the delete link if need be. **pmss** also lets you empty the whole screenshots directory with a single key press.
 
 
 ## Features :
@@ -14,6 +14,8 @@
   - Window selected by the user
  - Take the screenshot of area selected by mouse
  - Upload the screenshot to imgur
+  - Anonymous upload
+  - Account upload
  - Image sharing links in multiple formats
  - Image upload log
  - Empty screenshots directory with a key press
@@ -24,7 +26,7 @@
 ### Required :
 
 - Scrot - Scrot is a minimalistic command line screen capturing application. [Scrot] is available in repositories of almost every linux distribution out there. Use your distribution's package manager to install Scrot.
-- xdotool - xdotool lets you simulate keyboard input and mouse activity. [xdotool] is available in repositories of almost every linux distribution. You can easily install it from your package manager.
+- xdotool - xdotool lets you simulate keyboard input and mouse activity. [xdotool] is available in repositories of almost every linux distribution. You can easily install it from your package manager. For **pmss-legacy** xdotool is not required.
 
 ### Optional :
 
@@ -74,7 +76,9 @@ This work (<span property="dct:title">pmss</span>, by [<span property="dct:title
 
 ## Credits :
 
-imgur upload function of **pmss** is based on the work of Bart Nagel & Tino Sino.
+_imgur upload function of **pmss** is based on the work of Bart Nagel & Tino Sino._
+
+_OAuth 2.0 setup function of **pmss** is based on the work of Rany Albeg Wein._
 #
 [Scrot]:http://freecode.com/projects/scrot
 [xdotool]:http://semicomplete.com/projects/xdotool
