@@ -360,7 +360,6 @@ function setup_stage1 (){
 if test -f "${PMSS_CONFIG}"; then
 imgur_token_test
 fi
-printf "\033c"
 echo -e ""
 echo -e '\E[1;32;49m'"To Upload To Your imgur Account, \"OAuth 2\" Setup Needs To Be Completed"
 echo -e '\E[1;32;49m'"Start The \"OAuth 2\" Setup Process Now?"
@@ -574,9 +573,11 @@ tput sgr0
 read -er Choice
 case "$Choice" in
 "A" | "a")
+printf "\033c"
 imgur_upload_anonymous
 ;;
 "U" | "u")
+printf "\033c"
 setup_stage1
 ;;
 *)
