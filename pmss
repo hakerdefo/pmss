@@ -176,7 +176,67 @@ PMSS_RM=$(which rm)
 MenU
 }
 ########
-function imgur_upload (){
+function imgur_upload_personal (){
+printf "\033c"
+while IFS=: read -r k v; do
+codes_map["$k"]="$v"
+done < "${PMSS_CONFIG}"
+if ! wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://api.imgur.com" -O /dev/null; then
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"PMSS Cannot Connect To \"imgur\""
+echo -e '\E[1;32;49m'"Check Your Internet Connection"
+echo -e ""
+read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
+MenU
+fi
+RESPONSE=$(curl -s --connect-timeout 30 --user-agent "Mozilla/5.0 Gecko/20100101" -X POST -H "Authorization: Bearer ${codes_map[access_token]}" -F "image=@$NAME" "https://api.imgur.com/3/image.xml" 2>/dev/null)
+if grep -q 'success="0"' <<<"$RESPONSE"; then
+ERR_MSG2="${RESPONSE##*<error>}"
+ERR_MSG="${ERR_MSG2%%</error>*}"
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Something Went Wrong! Upload To imgur Failed!"
+echo -e '\E[1;32;49m'"The Following Error Message Was Sent By imgur"
+echo -e ""
+echo -e '\E[1;32;49m'"\"$ERR_MSG\""
+echo -e ""
+read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
+MenU
+fi
+URL3="${RESPONSE##*<link>}"
+URL2="${URL3%%</link>*}"
+URL="${URL2//http:/https:}"
+BASE_URL="${URL%.*}"
+BASE_EXT="${URL##*.}"
+DEL_HASH2="${RESPONSE##*<deletehash>}"
+DEL_HASH="${DEL_HASH2%%</deletehash>*}"
+DEL_URL="https://imgur.com/delete/${DEL_HASH}"
+printf "\033c"
+echo -e '\E[1;32;49m'"DIRECT LINK"
+echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"${URL}"
+echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"${BASE_URL}m.${BASE_EXT}"
+echo -e ""
+echo -e '\E[1;32;49m'"BBCODE LINK (FORUMS, MESSAGE BOARDS)"
+echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"[img]${URL}[/img]"
+echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"[url=${BASE_URL}][img]${BASE_URL}m.${BASE_EXT}[/img][/url]"
+echo -e ""
+echo -e '\E[1;32;49m'"MARKDOWN LINK (REDDIT, GITHUB)"
+echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"[${SHORT_NAME}](${URL})"
+echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"[${SHORT_NAME}](${BASE_URL}m.${BASE_EXT})"
+echo -e ""
+echo -e '\E[1;32;49m'"HTML LINK (WEBSITES, BLOGS)"
+echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"<a href=${BASE_URL}><img src=${URL} title=${SHORT_NAME} /></a>"
+echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"<a href=${BASE_URL}><img src=${BASE_URL}m.${BASE_EXT} title=${SHORT_NAME} /></a>"
+echo -e ""
+echo -e '\E[1;32;49m'"DELETE LINK"
+echo -e '\E[1;32;49m'"Delete url: "'\E[0;32;49m'"${DEL_URL}"
+echo -e '\E[1;32;49m'""
+read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
+MenU
+}
+########
+function imgur_token_test (){
 if ! type curl >/dev/null 2>&1; then
 printf "\033c"
 echo -e ""
@@ -188,10 +248,17 @@ echo -e ""
 read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 MenU
 fi
+PERMS_CONFIG=$(stat -c "%a" "${PMSS_CONFIG}")
 printf "\033c"
-RESPONSE=$(curl -s --connect-timeout 30 --user-agent "Mozilla/5.0 Gecko/20100101" -H "Authorization: Client-ID $ID_CLIENT" -H "Expect: " -F "image=@$NAME" https://api.imgur.com/3/image.xml 2>/dev/null)
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
+if ! [[ "${PERMS_CONFIG}" == 600 ]]; then
+chmod 600 "${PMSS_CONFIG}"
+fi
+while IFS=: read -r k v; do
+codes_map["$k"]="$v"
+done < "${PMSS_CONFIG}"
+TOKEN_TIME=$(find "${PMSS_CONFIG}" -mmin +40319)
+if test "$TOKEN_TIME"; then
+if ! wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://api.imgur.com" -O /dev/null; then
 printf "\033c"
 echo -e ""
 echo -e '\E[1;32;49m'"PMSS Cannot Connect To \"imgur\""
@@ -200,14 +267,214 @@ echo -e ""
 read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 MenU
 fi
+RESPONSE=$(curl -s --connect-timeout 30 --user-agent "Mozilla/5.0 Gecko/20100101" -X POST -H "Authorization: Bearer ${codes_map[access_token]}" -F "refresh_token=${codes_map[refresh_token]}" -F "client_id=${codes_map[client_id]}" -F "client_secret=${codes_map[client_secret]}" -F "grant_type=refresh_token" "https://api.imgur.com/oauth2/token" 2>/dev/null)
+if grep -q 'success:false' <<<"$RESPONSE"; then
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"PMSS Failed To Refresh The Access Token"
+echo -e '\E[1;32;49m'"Please Retry The Process Sometime Later"
+echo -e ""
+read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
+MenU
+fi
+while IFS=\" read -rd \, _ k _ v; do
+if [[ "$k" = @(access_token|refresh_token) ]]; then
+codes_map["$k"]="$v"
+fi
+done <<< "$RESPONSE"
+printf '%s:%s\n' access_token "${codes_map[access_token]}" refresh_token "${codes_map[refresh_token]}" client_id "${codes_map[client_id]}" client_secret "${codes_map[client_secret]}" > "${PMSS_CONFIG}"
+imgur_upload_personal
+else
+imgur_upload_personal
+fi
+}
+########
+function setup_stage2 (){
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Enter The \"Access Token\" Acquired During The Setup Process"
+echo -e ""
+read -er access_token
+if [[ -z "$access_token" ]]; then
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Nothing Was Entered!!!"
+echo -e ""
+sleep 2
+setup_stage2
+fi
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Enter The \"Refresh Token\" Acquired During The Setup Process"
+echo -e ""
+read -er refresh_token
+if [[ -z "$refresh_token" ]]; then
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Nothing Was Entered!!!"
+echo -e ""
+sleep 2
+setup_stage2
+fi
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Enter The \"Client ID\" Acquired During The Setup Process"
+echo -e ""
+read -er client_id
+if [[ -z "$client_id" ]]; then
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Nothing Was Entered!!!"
+echo -e ""
+sleep 2
+setup_stage2
+fi
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Enter The \"Client Secret\" Acquired During The Setup Process"
+echo -e ""
+read -er client_secret
+if [[ -z "$client_secret" ]]; then
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Nothing Was Entered!!!"
+echo -e ""
+sleep 2
+setup_stage2
+fi
+codes_map[access_token]="$access_token"
+codes_map[refresh_token]="$refresh_token"
+codes_map[client_id]="$client_id"
+codes_map[client_secret]="$client_secret"
+printf '%s:%s\n' access_token "${codes_map[access_token]}" refresh_token "${codes_map[refresh_token]}" client_id "${codes_map[client_id]}" client_secret "${codes_map[client_secret]}" > "$PMSS_CONFIG"
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"imgur \"OAuth 2\" Setup Is Now Complete"
+echo -e '\E[1;32;49m'"Enjoy Uploading To Your imgur Account"
+echo -e ""
+read -r -s -p $'Press Any Key To Continue..\n' -n1
+imgur_token_test
+}
+########
+function setup_stage1 (){
+if test -f "${PMSS_CONFIG}"; then
+imgur_token_test
+fi
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"To Upload To Your imgur Account, \"OAuth 2\" Setup Needs To Be Completed"
+echo -e '\E[1;32;49m'"Start The \"OAuth 2\" Setup Process Now?"
+echo -e ""
+echo -e '\E[1;32;49m'"Enter \"Y\" To Start The Setup"
+echo -e '\E[1;32;49m'"Enter \"N\" To Go Back To Menu"
+echo -e ""
+echo -e '\E[1;32;49m'"Enter Your Choice: "
+echo -e ""
+tput sgr0
+read -er Choice
+case "$Choice" in
+"Y" | "y")
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"First You Need To Register A New Application At imgur"
+echo -e '\E[1;32;49m'"While Registering At imgur Do Select Following Option"
+echo -e ""
+echo -e '\E[0;32;49m'"\"OAuth 2 authorization without a callback URL\""
+echo -e ""
+echo -e ""
+echo -e '\E[1;32;49m'"Open Following Link In A Browser To Register At imgur"
+echo -e ""
+echo -e '\E[0;32;49m'"https://api.imgur.com/oauth2/addclient"
+echo -e ""
+echo -e ""
+echo -e '\E[1;32;49m'"You Would Now Have Your \"Client ID\" & \"Client Secret\""
+echo -e '\E[1;32;49m'"Save Them In A Text File As They'll Be Required Later"
+echo -e ""
+read -rsp $'Press Any Key To Continue The Setup Process..\n' -n1
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Next In The Following Link, Replace \"CLIENT_ID\" With,"
+echo -e '\E[1;32;49m'"Your \"Client ID\" Received After registration At imgur"
+echo -e '\E[1;32;49m'"And Open The URL In A Browser To Receive Personal \"PIN\""
+echo -e ""
+echo -e '\E[0;32;49m'"https://api.imgur.com/oauth2/authorize?client_id=CLIENT_ID&response_type=pin"
+echo -e ""
+echo -e ""
+echo -e '\E[1;32;49m'"imgur webpage will display you the following message,"
+echo -e ""
+echo -e '\E[0;32;49m'"\"An application would like to connect to your account\""
+echo -e ""
+echo -e ""
+echo -e '\E[1;32;49m'"On this imgur page simply click on the \"allow\" button"
+echo -e '\E[1;32;49m'"You Will Now Have \"Client ID\" \"Client Secret\" & \"PIN\""
+echo -e '\E[1;32;49m'"Save Them In A Text File As They'll Be Required Later"
+echo -e ""
+read -rsp $'Press Any Key To Continue The Setup Process..\n' -n1
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Replace \"CLIENT_ID\" \"CLIENT_SECRET\" & \"PIN\" With The,"
+echo -e '\E[1;32;49m'"\"Client ID\" \"Client Secret\" & \"PIN\" That You Have Got"
+echo -e '\E[1;32;49m'"From imgur And Run The Following Command In A Terminal"
+echo -e ""
+echo -e '\E[0;32;49m'"curl -X POST -F \"client_id=CLIENT_ID\" -F \"client_secret=CLIENT_SECRET\" -F \"pin=PIN\" -F \"grant_type=pin\" \"https://api.imgur.com/oauth2/token\""
+echo -e ""
+echo -e ""
+echo -e '\E[1;32;49m'"You Will Now Have \"Access Token\" And \"Refresh Token\""
+echo -e '\E[1;32;49m'"Save Them In A Text File As They'll Be Required Later"
+echo -e ""
+read -rsp $'Press Any Key To Continue The Setup Process..\n' -n1
+setup_stage2
+;;
+"N" | "n")
+MenU
+;;
+*)
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Choice!!!"
+echo -e ""
+echo -e '\E[1;32;49m'"Correct Options To Choose Are From Y-N"
+echo -e ""
+echo -e '\E[1;32;49m'"To Start OAuth 2 Set-up, Enter \"Y\""
+echo -e '\E[1;32;49m'"To Go Back To Main Menu, Enter \"N\""
+echo -e ""
+echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
+echo -e ""
+read -r -s -p $'Press Any Key To Continue..\n' -n1
+setup_stage1
+;;
+esac
+}
+########
+function imgur_upload_anonymous (){
+if ! type curl >/dev/null 2>&1; then
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"PMSS Requires \"cURL\" To Upload To imgur"
+echo -e '\E[1;32;49m'"Install \"curl\" Via Your Package-manager"
+echo -e '\E[1;32;49m'"For extra info go to website of \"cURL\","
+echo -e '\E[1;32;49m'"https://curl.haxx.se/"
+echo -e ""
+read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
+MenU
+fi
+if ! wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://api.imgur.com" -O /dev/null; then
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"PMSS Cannot Connect To \"imgur\""
+echo -e '\E[1;32;49m'"Check Your Internet Connection"
+echo -e ""
+read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
+MenU
+fi
+RESPONSE=$(curl -s --connect-timeout 30 --user-agent "Mozilla/5.0 Gecko/20100101" -X POST -H "Authorization: Client-ID $ID_CLIENT" -F "image=@$NAME" "https://api.imgur.com/3/image.xml" 2>/dev/null)
 if grep -q 'success="0"' <<<"$RESPONSE"; then
 ERR_MSG2="${RESPONSE##*<error>}"
 ERR_MSG="${ERR_MSG2%%</error>*}"
 printf "\033c"
 echo -e ""
-echo -e '\E[1;32;49m'"OOPS! Something Went Wrong!"
-echo -e '\E[1;32;49m'"Upload To imgur Has Failed!"
-echo -e '\E[1;32;49m'"The Message imgur Sent Was,"
+echo -e '\E[1;32;49m'"Something Went Wrong! Upload To imgur Failed!"
+echo -e '\E[1;32;49m'"The Following Error Message Was Sent By imgur"
 echo -e ""
 echo -e '\E[1;32;49m'"\"$ERR_MSG\""
 echo -e ""
@@ -284,9 +551,9 @@ fi
 echo -e ""
 echo -e '\E[1;32;49m'"Do You Want To Upload The Screenshot?"
 echo -e ""
-echo -e '\E[1;32;49m'"Press \"Y\" To Upload The Shot To imgur"
-echo -e '\E[1;32;49m'"Press \"D\" To Purge The Shot & Go Back"
-echo -e '\E[1;32;49m'"Press \"N\" To Go Back To The Main Menu"
+echo -e '\E[1;32;49m'"Enter \"Y\" To Upload The Shot To imgur"
+echo -e '\E[1;32;49m'"Enter \"D\" To Purge The Shot & Go Back"
+echo -e '\E[1;32;49m'"Enter \"N\" To Go Back To The Main Menu"
 echo -e ""
 echo -e '\E[1;32;49m'"Enter Your Choice: "
 echo -e ""
@@ -294,7 +561,40 @@ tput sgr0
 read -er Choice
 case "$Choice" in
 "Y" | "y")
-imgur_upload
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"Select The Preferred Image Upload Mode"
+echo -e ""
+echo -e '\E[1;32;49m'"Enter \"A\" For Anonymous Image Upload"
+echo -e '\E[1;32;49m'"Enter \"U\" To Upload Image To Account"
+echo -e ""
+echo -e '\E[1;32;49m'"Enter Your Choice: "
+echo -e ""
+tput sgr0
+read -er Choice
+case "$Choice" in
+"A" | "a")
+imgur_upload_anonymous
+;;
+"U" | "u")
+setup_stage1
+;;
+*)
+printf "\033c"
+echo -e ""
+echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Choice!!!"
+echo -e ""
+echo -e '\E[1;32;49m'"Correct Options To Choose Are From A-P"
+echo -e ""
+echo -e '\E[1;32;49m'"For Uploading Image Anonymously, Enter \"A\""
+echo -e '\E[1;32;49m'"To Upload Image To Your Account, Enter \"U\""
+echo -e ""
+echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
+echo -e ""
+read -r -s -p $'Press Any Key To Continue..\n' -n1
+MenU
+;;
+esac
 ;;
 "D" | "d")
 purge_shot
@@ -309,13 +609,13 @@ echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Choice!!!"
 echo -e ""
 echo -e '\E[1;32;49m'"Correct Options To Choose Are From Y-D-N"
 echo -e ""
-echo -e '\E[1;32;49m'"To Upload Image To imgur, Press \"Y\""
-echo -e '\E[1;32;49m'"To Delete Captured Image, Press \"D\""
-echo -e '\E[1;32;49m'"To Move Back To The Menu, Press \"N\""
+echo -e '\E[1;32;49m'"To Upload Image To imgur, Enter \"Y\""
+echo -e '\E[1;32;49m'"To Delete Captured Image, Enter \"D\""
+echo -e '\E[1;32;49m'"To Move Back To The Menu, Enter \"N\""
 echo -e ""
 echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
 echo -e ""
-read -r -s -p $'Press Any Key To Continue..\n' -n1
+read -rsp $'Press Any Key To Continue..\n' -n1
 MenU
 ;;
 esac
@@ -598,7 +898,9 @@ test -d "${DIR}" || mkdir -p "${DIR}"
 fi
 PMSS_LOG="${DIR}/pmss-upload.log"
 test -f "${PMSS_LOG}" || touch "${PMSS_LOG}"
-ID_CLIENT="af2f809b77dea2c"
+PMSS_CONFIG="${DIR}/.pmss.cfg"
+ID_CLIENT=$(tr '\!-~' 'P-~\!-O' <<<"27a7g_h3ff562a4")
+declare -A codes_map
 printf "\033c"
 echo -e '\E[1;32;49m'"** PMSS<>MENU *************************************************"
 echo -e ""
