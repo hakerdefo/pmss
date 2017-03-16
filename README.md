@@ -41,10 +41,6 @@ Download [pmss-master] zip, extract its contents into a directory, open that dir
 ```sh
 sudo cp pmss /usr/local/bin/
 ```
-Next make it executable,
-```sh
-sudo chmod 755 /usr/local/bin/pmss
-```
 
 
 ## Usage :
