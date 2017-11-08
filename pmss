@@ -2,9 +2,9 @@
 
 function bye_bye (){
     printf "\033c"
-    echo -e '\E[1;32;49m'"A Screenshot Is An Image Of The Display On A Computer Screen"
-    echo -e '\E[1;32;49m'"But You Already Knew That So"
-    echo -e '\E[1;32;49m'"Bye, Ciao, Adios"
+    echo -e '\E[1;32m'"A Screenshot Is An Image Of The Display On A Computer Screen"
+    echo -e '\E[1;32m'"But You Already Knew That So"
+    echo -e '\E[1;32m'"Bye, Ciao, Adios"
     sleep 2
     printf "\033c"
     tput sgr0
@@ -12,15 +12,15 @@ function bye_bye (){
 }
 
 function view_log (){
-    test -f "${PMSS_LOG}" || { printf "\033c"; echo -e ""; echo -e '\E[1;32;49m'"PMSS Upload Log File Not Found"; echo -e '\E[1;32;49m'"Upload A Few Screenshots First"; echo -e ""; read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1; MenU; }
-    test -s "${PMSS_LOG}" || { printf "\033c"; echo -e ""; echo -e '\E[1;32;49m'"PMSS Upload Log File Is Empty"; echo -e '\E[1;32;49m'"Upload Some Screenshots First"; echo -e ""; read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1; MenU; }
+    test -f "${PMSS_LOG}" || { printf "\033c"; echo -e ""; echo -e '\E[1;32m'"PMSS Upload Log File Not Found"; echo -e '\E[1;32m'"Upload A Few Screenshots First"; echo -e ""; read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1; MenU; }
+    test -s "${PMSS_LOG}" || { printf "\033c"; echo -e ""; echo -e '\E[1;32m'"PMSS Upload Log File Is Empty"; echo -e '\E[1;32m'"Upload Some Screenshots First"; echo -e ""; read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1; MenU; }
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;32;49m'"Press \"V\" To View The Upload Log File"
-    echo -e '\E[1;32;49m'"Press \"W\" To Wipe The Upload Log File"
-    echo -e '\E[1;32;49m'"Press \"N\" To Go Back To The Main Menu"
+    echo -e '\E[1;32m'"Press \"V\" To View The Upload Log File"
+    echo -e '\E[1;32m'"Press \"W\" To Wipe The Upload Log File"
+    echo -e '\E[1;32m'"Press \"N\" To Go Back To The Main Menu"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter Your Choice: "
+    echo -e '\E[1;32m'"Enter Your Choice: "
     echo -e ""
     tput sgr0
     read -er Choice
@@ -29,17 +29,17 @@ function view_log (){
 	    if ! type less >/dev/null 2>&1; then
 		printf "\033c"
 		echo -e ""
-		echo -e '\E[1;32;49m'"PMSS Requires File Pager \"less\" To Display Upload Log"
-		echo -e '\E[1;32;49m'"Please Install Package \"less\" Via The Package Manager"
-		echo -e '\E[1;32;49m'"For Extra Information On \"less\" Please Visit Homepage"
-		echo -e '\E[1;32;49m'"http://www.greenwoodsoftware.com/less/"
+		echo -e '\E[1;32m'"PMSS Requires File Pager \"less\" To Display Upload Log"
+		echo -e '\E[1;32m'"Please Install Package \"less\" Via The Package Manager"
+		echo -e '\E[1;32m'"For Extra Information On \"less\" Please Visit Homepage"
+		echo -e '\E[1;32m'"http://www.greenwoodsoftware.com/less/"
 		echo -e ""
 		read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 		MenU
 	    else
 		printf "\033c"
 		echo -e ""
-		echo -e '\E[1;32;49m'"Once You Are Done Viewing, Press \"Q\" To Close The File"
+		echo -e '\E[1;32m'"Once You Are Done Viewing, Press \"Q\" To Close The File"
 		echo -e ""
 		read -r -s -p $'Press Any Key To View The File...\n' -n1
 		tput sgr0
@@ -50,12 +50,12 @@ function view_log (){
 	"W" | "w")
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"This Will Clear Entire Upload Log! Are You Sure?"
+	    echo -e '\E[1;32m'"This Will Clear Entire Upload Log! Are You Sure?"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Press \"Y\" To Wipe The Upload Log File"
-	    echo -e '\E[1;32;49m'"Press \"N\" To Go Back To The Main Menu"
+	    echo -e '\E[1;32m'"Press \"Y\" To Wipe The Upload Log File"
+	    echo -e '\E[1;32m'"Press \"N\" To Go Back To The Main Menu"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Enter Your Choice: "
+	    echo -e '\E[1;32m'"Enter Your Choice: "
 	    echo -e ""
 	    tput sgr0
 	    read -er Choice
@@ -68,7 +68,7 @@ function view_log (){
 		    fi
 		    printf "\033c"
 		    echo -e ""
-		    echo -e '\E[1;32;49m'"The Upload Log File Has Been Cleared"
+		    echo -e '\E[1;32m'"The Upload Log File Has Been Cleared"
 		    echo -e ""
 		    read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 		    MenU
@@ -79,14 +79,14 @@ function view_log (){
 		*)
 		    printf "\033c"
 		    echo -e ""
-		    echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Choice!!!"
+		    echo -e '\E[1;32m'"\"$Choice\" Is An Invalid Choice!!!"
 		    echo -e ""
-		    echo -e '\E[1;32;49m'"Correct Options To Choose Are From Y-N"
+		    echo -e '\E[1;32m'"Correct Options To Choose Are From Y-N"
 		    echo -e ""
-		    echo -e '\E[1;32;49m'"To Wipe The Upload Log File, Press \"Y\""
-		    echo -e '\E[1;32;49m'"To Go Back To The Main Menu, Press \"N\""
+		    echo -e '\E[1;32m'"To Wipe The Upload Log File, Press \"Y\""
+		    echo -e '\E[1;32m'"To Go Back To The Main Menu, Press \"N\""
 		    echo -e ""
-		    echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
+		    echo -e '\E[1;32m'"Got it? It Is Not That Hard You See"
 		    echo -e ""
 		    read -r -s -p $'Press Any Key To Continue..\n' -n1
 		    view_log
@@ -99,15 +99,15 @@ function view_log (){
 	*)
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Choice!!!"
+	    echo -e '\E[1;32m'"\"$Choice\" Is An Invalid Choice!!!"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Correct Options To Choose Are From V-W-N"
+	    echo -e '\E[1;32m'"Correct Options To Choose Are From V-W-N"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"To View The Upload Log File, Press \"V\""
-	    echo -e '\E[1;32;49m'"To Wipe The Upload Log File, Press \"W\""
-	    echo -e '\E[1;32;49m'"To Go Back To The Main Menu, Press \"N\""
+	    echo -e '\E[1;32m'"To View The Upload Log File, Press \"V\""
+	    echo -e '\E[1;32m'"To Wipe The Upload Log File, Press \"W\""
+	    echo -e '\E[1;32m'"To Go Back To The Main Menu, Press \"N\""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
+	    echo -e '\E[1;32m'"Got it? It Is Not That Hard You See"
 	    echo -e ""
 	    read -r -s -p $'Press Any Key To Continue..\n' -n1
 	    view_log
@@ -118,12 +118,12 @@ function view_log (){
 function empty_dir (){
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;32;49m'"This Will Remove All Saved Screenshots! Are You Sure?"
+    echo -e '\E[1;32m'"This Will Remove All Saved Screenshots! Are You Sure?"
     echo -e ""
-    echo -e '\E[1;32;49m'"Press \"Y\" To Empty Screenshots Directory"
-    echo -e '\E[1;32;49m'"Press \"N\" To Move Back To Main PMSS Menu"
+    echo -e '\E[1;32m'"Press \"Y\" To Empty Screenshots Directory"
+    echo -e '\E[1;32m'"Press \"N\" To Move Back To Main PMSS Menu"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter Your Choice: "
+    echo -e '\E[1;32m'"Enter Your Choice: "
     echo -e ""
     tput sgr0
     read -er Choice
@@ -132,8 +132,8 @@ function empty_dir (){
 	    if test -z "$(find "${DIR}" -maxdepth 1 -name '*.png' -print -quit)"; then
 		printf "\033c"
 		echo -e ""
-		echo -e '\E[1;32;49m'"Screenshots Directory Is Empty"
-		echo -e '\E[1;32;49m'"Nothing To Delete. Say Cheese!"
+		echo -e '\E[1;32m'"Screenshots Directory Is Empty"
+		echo -e '\E[1;32m'"Nothing To Delete. Say Cheese!"
 		echo -e ""
 		read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 		MenU
@@ -142,7 +142,7 @@ function empty_dir (){
 		"$PMSS_RM" -f "${DIR}"/*.png
 		printf "\033c"
 		echo -e ""
-		echo -e '\E[1;32;49m'"Screenshots Directory Has Been Emptied"
+		echo -e '\E[1;32m'"Screenshots Directory Has Been Emptied"
 		echo -e ""
 		read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 		MenU
@@ -154,14 +154,14 @@ function empty_dir (){
 	*)
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Choice!!!"
+	    echo -e '\E[1;32m'"\"$Choice\" Is An Invalid Choice!!!"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Correct Options To Choose Are From Y-N"
+	    echo -e '\E[1;32m'"Correct Options To Choose Are From Y-N"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"To Empty Screenshots Directory, Press \"Y\""
-	    echo -e '\E[1;32;49m'"To Move Back To Main PMSS Menu, Press \"N\""
+	    echo -e '\E[1;32m'"To Empty Screenshots Directory, Press \"Y\""
+	    echo -e '\E[1;32m'"To Move Back To Main PMSS Menu, Press \"N\""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
+	    echo -e '\E[1;32m'"Got it? It Is Not That Hard You See"
 	    echo -e ""
 	    read -r -s -p $'Press Any Key To Continue..\n' -n1
 	    empty_dir
@@ -184,8 +184,8 @@ function imgur_upload_personal (){
     if ! wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://api.imgur.com" -O /dev/null; then
 	printf "\033c"
 	echo -e ""
-	echo -e '\E[1;32;49m'"PMSS Cannot Connect To \"imgur\""
-	echo -e '\E[1;32;49m'"Check Your Internet Connection"
+	echo -e '\E[1;32m'"PMSS Cannot Connect To \"imgur\""
+	echo -e '\E[1;32m'"Check Your Internet Connection"
 	echo -e ""
 	read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 	MenU
@@ -196,10 +196,10 @@ function imgur_upload_personal (){
 	ERR_MSG="${ERR_MSG2%%</error>*}"
 	printf "\033c"
 	echo -e ""
-	echo -e '\E[1;32;49m'"Something Went Wrong! Upload To imgur Failed!"
-	echo -e '\E[1;32;49m'"The Following Error Message Was Sent By imgur"
+	echo -e '\E[1;32m'"Something Went Wrong! Upload To imgur Failed!"
+	echo -e '\E[1;32m'"The Following Error Message Was Sent By imgur"
 	echo -e ""
-	echo -e '\E[1;32;49m'"\"$ERR_MSG\""
+	echo -e '\E[1;32m'"\"$ERR_MSG\""
 	echo -e ""
 	read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 	MenU
@@ -213,25 +213,25 @@ function imgur_upload_personal (){
     DEL_HASH="${DEL_HASH2%%</deletehash>*}"
     DEL_URL="https://imgur.com/delete/${DEL_HASH}"
     printf "\033c"
-    echo -e '\E[1;32;49m'"DIRECT LINK"
-    echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"${URL}"
-    echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"${BASE_URL}m.${BASE_EXT}"
+    echo -e '\E[1;32m'"DIRECT LINK"
+    echo -e '\E[1;32m'"Original  : "'\E[0;32m'"${URL}"
+    echo -e '\E[1;32m'"Thumbnail : "'\E[0;32m'"${BASE_URL}m.${BASE_EXT}"
     echo -e ""
-    echo -e '\E[1;32;49m'"BBCODE LINK (FORUMS, MESSAGE BOARDS)"
-    echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"[img]${URL}[/img]"
-    echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"[url=${BASE_URL}][img]${BASE_URL}m.${BASE_EXT}[/img][/url]"
+    echo -e '\E[1;32m'"BBCODE LINK (FORUMS, MESSAGE BOARDS)"
+    echo -e '\E[1;32m'"Original  : "'\E[0;32m'"[img]${URL}[/img]"
+    echo -e '\E[1;32m'"Thumbnail : "'\E[0;32m'"[url=${BASE_URL}][img]${BASE_URL}m.${BASE_EXT}[/img][/url]"
     echo -e ""
-    echo -e '\E[1;32;49m'"MARKDOWN LINK (REDDIT, GITHUB)"
-    echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"[${SHORT_NAME}](${URL})"
-    echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"[${SHORT_NAME}](${BASE_URL}m.${BASE_EXT})"
+    echo -e '\E[1;32m'"MARKDOWN LINK (REDDIT, GITHUB)"
+    echo -e '\E[1;32m'"Original  : "'\E[0;32m'"[${SHORT_NAME}](${URL})"
+    echo -e '\E[1;32m'"Thumbnail : "'\E[0;32m'"[${SHORT_NAME}](${BASE_URL}m.${BASE_EXT})"
     echo -e ""
-    echo -e '\E[1;32;49m'"HTML LINK (WEBSITES, BLOGS)"
-    echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"<a href=${BASE_URL}><img src=${URL} title=${SHORT_NAME} /></a>"
-    echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"<a href=${BASE_URL}><img src=${BASE_URL}m.${BASE_EXT} title=${SHORT_NAME} /></a>"
+    echo -e '\E[1;32m'"HTML LINK (WEBSITES, BLOGS)"
+    echo -e '\E[1;32m'"Original  : "'\E[0;32m'"<a href=${BASE_URL}><img src=${URL} title=${SHORT_NAME} /></a>"
+    echo -e '\E[1;32m'"Thumbnail : "'\E[0;32m'"<a href=${BASE_URL}><img src=${BASE_URL}m.${BASE_EXT} title=${SHORT_NAME} /></a>"
     echo -e ""
-    echo -e '\E[1;32;49m'"DELETE LINK"
-    echo -e '\E[1;32;49m'"Delete url: "'\E[0;32;49m'"${DEL_URL}"
-    echo -e '\E[1;32;49m'""
+    echo -e '\E[1;32m'"DELETE LINK"
+    echo -e '\E[1;32m'"Delete url: "'\E[0;32m'"${DEL_URL}"
+    echo -e '\E[1;32m'""
     read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
     MenU
 }
@@ -240,10 +240,10 @@ function imgur_token_test (){
     if ! type curl >/dev/null 2>&1; then
 	printf "\033c"
 	echo -e ""
-	echo -e '\E[1;32;49m'"PMSS Requires \"cURL\" To Upload To imgur"
-	echo -e '\E[1;32;49m'"Install \"curl\" Via Your Package-manager"
-	echo -e '\E[1;32;49m'"For Extra Info Go To Website Of \"cURL\","
-	echo -e '\E[1;32;49m'"https://curl.haxx.se/"
+	echo -e '\E[1;32m'"PMSS Requires \"cURL\" To Upload To imgur"
+	echo -e '\E[1;32m'"Install \"curl\" Via Your Package-manager"
+	echo -e '\E[1;32m'"For Extra Info Go To Website Of \"cURL\","
+	echo -e '\E[1;32m'"https://curl.haxx.se/"
 	echo -e ""
 	read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 	MenU
@@ -261,8 +261,8 @@ function imgur_token_test (){
 	if ! wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://api.imgur.com" -O /dev/null; then
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"PMSS Cannot Connect To \"imgur\""
-	    echo -e '\E[1;32;49m'"Check Your Internet Connection"
+	    echo -e '\E[1;32m'"PMSS Cannot Connect To \"imgur\""
+	    echo -e '\E[1;32m'"Check Your Internet Connection"
 	    echo -e ""
 	    read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 	    MenU
@@ -271,8 +271,8 @@ function imgur_token_test (){
 	if grep -q 'success:false' <<<"$RESPONSE"; then
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"PMSS Failed To Refresh The Access Token"
-	    echo -e '\E[1;32;49m'"Please Retry The Process Sometime Later"
+	    echo -e '\E[1;32m'"PMSS Failed To Refresh The Access Token"
+	    echo -e '\E[1;32m'"Please Retry The Process Sometime Later"
 	    echo -e ""
 	    read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 	    MenU
@@ -292,52 +292,52 @@ function imgur_token_test (){
 function setup_stage2 (){
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter The \"Access Token\" Acquired During The Setup Process"
+    echo -e '\E[1;32m'"Enter The \"Access Token\" Acquired During The Setup Process"
     echo -e ""
     read -er access_token
     if [[ -z "$access_token" ]]; then
 	printf "\033c"
 	echo -e ""
-	echo -e '\E[1;32;49m'"Nothing Was Entered!!!"
+	echo -e '\E[1;32m'"Nothing Was Entered!!!"
 	echo -e ""
 	sleep 2
 	setup_stage2
     fi
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter The \"Refresh Token\" Acquired During The Setup Process"
+    echo -e '\E[1;32m'"Enter The \"Refresh Token\" Acquired During The Setup Process"
     echo -e ""
     read -er refresh_token
     if [[ -z "$refresh_token" ]]; then
 	printf "\033c"
 	echo -e ""
-	echo -e '\E[1;32;49m'"Nothing Was Entered!!!"
+	echo -e '\E[1;32m'"Nothing Was Entered!!!"
 	echo -e ""
 	sleep 2
 	setup_stage2
     fi
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter The \"Client ID\" Acquired During The Setup Process"
+    echo -e '\E[1;32m'"Enter The \"Client ID\" Acquired During The Setup Process"
     echo -e ""
     read -er client_id
     if [[ -z "$client_id" ]]; then
 	printf "\033c"
 	echo -e ""
-	echo -e '\E[1;32;49m'"Nothing Was Entered!!!"
+	echo -e '\E[1;32m'"Nothing Was Entered!!!"
 	echo -e ""
 	sleep 2
 	setup_stage2
     fi
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter The \"Client Secret\" Acquired During The Setup Process"
+    echo -e '\E[1;32m'"Enter The \"Client Secret\" Acquired During The Setup Process"
     echo -e ""
     read -er client_secret
     if [[ -z "$client_secret" ]]; then
 	printf "\033c"
 	echo -e ""
-	echo -e '\E[1;32;49m'"Nothing Was Entered!!!"
+	echo -e '\E[1;32m'"Nothing Was Entered!!!"
 	echo -e ""
 	sleep 2
 	setup_stage2
@@ -349,8 +349,8 @@ function setup_stage2 (){
     printf '%s:%s\n' access_token "${codes_map[access_token]}" refresh_token "${codes_map[refresh_token]}" client_id "${codes_map[client_id]}" client_secret "${codes_map[client_secret]}" > "$PMSS_CONFIG"
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;32;49m'"imgur \"OAuth 2\" Setup Is Now Complete"
-    echo -e '\E[1;32;49m'"Enjoy Uploading To Your imgur Account"
+    echo -e '\E[1;32m'"imgur \"OAuth 2\" Setup Is Now Complete"
+    echo -e '\E[1;32m'"Enjoy Uploading To Your imgur Account"
     echo -e ""
     read -r -s -p $'Press Any Key To Continue..\n' -n1
     imgur_token_test
@@ -361,13 +361,13 @@ function setup_stage1 (){
 	imgur_token_test
     fi
     echo -e ""
-    echo -e '\E[1;32;49m'"To Upload To Your imgur Account, \"OAuth 2\" Setup Needs To Be Completed"
-    echo -e '\E[1;32;49m'"Start The \"OAuth 2\" Setup Process Now?"
+    echo -e '\E[1;32m'"To Upload To Your imgur Account, \"OAuth 2\" Setup Needs To Be Completed"
+    echo -e '\E[1;32m'"Start The \"OAuth 2\" Setup Process Now?"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter \"Y\" To Start The Setup"
-    echo -e '\E[1;32;49m'"Enter \"N\" To Go Back To Menu"
+    echo -e '\E[1;32m'"Enter \"Y\" To Start The Setup"
+    echo -e '\E[1;32m'"Enter \"N\" To Go Back To Menu"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter Your Choice: "
+    echo -e '\E[1;32m'"Enter Your Choice: "
     echo -e ""
     tput sgr0
     read -er Choice
@@ -375,51 +375,51 @@ function setup_stage1 (){
 	"Y" | "y")
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"First You Need To Register A New Application At imgur"
-	    echo -e '\E[1;32;49m'"While Registering At imgur Do Select Following Option"
+	    echo -e '\E[1;32m'"First You Need To Register A New Application At imgur"
+	    echo -e '\E[1;32m'"While Registering At imgur Do Select Following Option"
 	    echo -e ""
-	    echo -e '\E[0;32;49m'"\"OAuth 2 authorization without a callback URL\""
-	    echo -e ""
-	    echo -e ""
-	    echo -e '\E[1;32;49m'"Open Following Link In A Browser To Register At imgur"
-	    echo -e ""
-	    echo -e '\E[0;32;49m'"https://api.imgur.com/oauth2/addclient"
+	    echo -e '\E[0;32m'"\"OAuth 2 authorization without a callback URL\""
 	    echo -e ""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"You Would Now Have Your \"Client ID\" & \"Client Secret\""
-	    echo -e '\E[1;32;49m'"Save Them In A Text File As They'll Be Required Later"
+	    echo -e '\E[1;32m'"Open Following Link In A Browser To Register At imgur"
 	    echo -e ""
-	    read -rsp $'Press Any Key To Continue The Setup Process..\n' -n1
-	    printf "\033c"
-	    echo -e ""
-	    echo -e '\E[1;32;49m'"Next In The Following Link, Replace \"CLIENT_ID\" With,"
-	    echo -e '\E[1;32;49m'"Your \"Client ID\" Received After registration At imgur"
-	    echo -e '\E[1;32;49m'"And Open The URL In A Browser To Receive Personal \"PIN\""
-	    echo -e ""
-	    echo -e '\E[0;32;49m'"https://api.imgur.com/oauth2/authorize?client_id=CLIENT_ID&response_type=pin"
+	    echo -e '\E[0;32m'"https://api.imgur.com/oauth2/addclient"
 	    echo -e ""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"imgur Webpage Will Display You The Following Message,"
-	    echo -e ""
-	    echo -e '\E[0;32;49m'"\"An application would like to connect to your account\""
-	    echo -e ""
-	    echo -e ""
-	    echo -e '\E[1;32;49m'"On This imgur Page Simply Click On The \"allow\" Button"
-	    echo -e '\E[1;32;49m'"You Will Now Have \"Client ID\" \"Client Secret\" & \"PIN\""
-	    echo -e '\E[1;32;49m'"Save Them In A Text File As They'll Be Required Later"
+	    echo -e '\E[1;32m'"You Would Now Have Your \"Client ID\" & \"Client Secret\""
+	    echo -e '\E[1;32m'"Save Them In A Text File As They'll Be Required Later"
 	    echo -e ""
 	    read -rsp $'Press Any Key To Continue The Setup Process..\n' -n1
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Replace \"CLIENT_ID\" \"CLIENT_SECRET\" & \"PIN\" With The,"
-	    echo -e '\E[1;32;49m'"\"Client ID\" \"Client Secret\" & \"PIN\" That You Have Got"
-	    echo -e '\E[1;32;49m'"From imgur And Run The Following Command In A Terminal"
+	    echo -e '\E[1;32m'"Next In The Following Link, Replace \"CLIENT_ID\" With,"
+	    echo -e '\E[1;32m'"Your \"Client ID\" Received After registration At imgur"
+	    echo -e '\E[1;32m'"And Open The URL In A Browser To Receive Personal \"PIN\""
 	    echo -e ""
-	    echo -e '\E[0;32;49m'"curl -X POST -F \"client_id=CLIENT_ID\" -F \"client_secret=CLIENT_SECRET\" -F \"pin=PIN\" -F \"grant_type=pin\" \"https://api.imgur.com/oauth2/token\""
+	    echo -e '\E[0;32m'"https://api.imgur.com/oauth2/authorize?client_id=CLIENT_ID&response_type=pin"
 	    echo -e ""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"You Will Now Have \"Access Token\" And \"Refresh Token\""
-	    echo -e '\E[1;32;49m'"Save Them In A Text File As They'll Be Required Later"
+	    echo -e '\E[1;32m'"imgur Webpage Will Display You The Following Message,"
+	    echo -e ""
+	    echo -e '\E[0;32m'"\"An application would like to connect to your account\""
+	    echo -e ""
+	    echo -e ""
+	    echo -e '\E[1;32m'"On This imgur Page Simply Click On The \"allow\" Button"
+	    echo -e '\E[1;32m'"You Will Now Have \"Client ID\" \"Client Secret\" & \"PIN\""
+	    echo -e '\E[1;32m'"Save Them In A Text File As They'll Be Required Later"
+	    echo -e ""
+	    read -rsp $'Press Any Key To Continue The Setup Process..\n' -n1
+	    printf "\033c"
+	    echo -e ""
+	    echo -e '\E[1;32m'"Replace \"CLIENT_ID\" \"CLIENT_SECRET\" & \"PIN\" With The,"
+	    echo -e '\E[1;32m'"\"Client ID\" \"Client Secret\" & \"PIN\" That You Have Got"
+	    echo -e '\E[1;32m'"From imgur And Run The Following Command In A Terminal"
+	    echo -e ""
+	    echo -e '\E[0;32m'"curl -X POST -F \"client_id=CLIENT_ID\" -F \"client_secret=CLIENT_SECRET\" -F \"pin=PIN\" -F \"grant_type=pin\" \"https://api.imgur.com/oauth2/token\""
+	    echo -e ""
+	    echo -e ""
+	    echo -e '\E[1;32m'"You Will Now Have \"Access Token\" And \"Refresh Token\""
+	    echo -e '\E[1;32m'"Save Them In A Text File As They'll Be Required Later"
 	    echo -e ""
 	    read -rsp $'Press Any Key To Continue The Setup Process..\n' -n1
 	    setup_stage2
@@ -430,14 +430,14 @@ function setup_stage1 (){
 	*)
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Choice!!!"
+	    echo -e '\E[1;32m'"\"$Choice\" Is An Invalid Choice!!!"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Correct Options To Choose Are From Y-N"
+	    echo -e '\E[1;32m'"Correct Options To Choose Are From Y-N"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"To Start OAuth 2 Set-up, Enter \"Y\""
-	    echo -e '\E[1;32;49m'"To Go Back To Main Menu, Enter \"N\""
+	    echo -e '\E[1;32m'"To Start OAuth 2 Set-up, Enter \"Y\""
+	    echo -e '\E[1;32m'"To Go Back To Main Menu, Enter \"N\""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
+	    echo -e '\E[1;32m'"Got it? It Is Not That Hard You See"
 	    echo -e ""
 	    read -r -s -p $'Press Any Key To Continue..\n' -n1
 	    setup_stage1
@@ -449,10 +449,10 @@ function imgur_upload_anonymous (){
     if ! type curl >/dev/null 2>&1; then
 	printf "\033c"
 	echo -e ""
-	echo -e '\E[1;32;49m'"PMSS Requires \"cURL\" To Upload To imgur"
-	echo -e '\E[1;32;49m'"Install \"curl\" Via Your Package-manager"
-	echo -e '\E[1;32;49m'"For Extra Info Go To Website Of \"cURL\","
-	echo -e '\E[1;32;49m'"https://curl.haxx.se/"
+	echo -e '\E[1;32m'"PMSS Requires \"cURL\" To Upload To imgur"
+	echo -e '\E[1;32m'"Install \"curl\" Via Your Package-manager"
+	echo -e '\E[1;32m'"For Extra Info Go To Website Of \"cURL\","
+	echo -e '\E[1;32m'"https://curl.haxx.se/"
 	echo -e ""
 	read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 	MenU
@@ -460,8 +460,8 @@ function imgur_upload_anonymous (){
     if ! wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://api.imgur.com" -O /dev/null; then
 	printf "\033c"
 	echo -e ""
-	echo -e '\E[1;32;49m'"PMSS Cannot Connect To \"imgur\""
-	echo -e '\E[1;32;49m'"Check Your Internet Connection"
+	echo -e '\E[1;32m'"PMSS Cannot Connect To \"imgur\""
+	echo -e '\E[1;32m'"Check Your Internet Connection"
 	echo -e ""
 	read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 	MenU
@@ -472,10 +472,10 @@ function imgur_upload_anonymous (){
 	ERR_MSG="${ERR_MSG2%%</error>*}"
 	printf "\033c"
 	echo -e ""
-	echo -e '\E[1;32;49m'"Something Went Wrong! Upload To imgur Failed!"
-	echo -e '\E[1;32;49m'"The Following Error Message Was Sent By imgur"
+	echo -e '\E[1;32m'"Something Went Wrong! Upload To imgur Failed!"
+	echo -e '\E[1;32m'"The Following Error Message Was Sent By imgur"
 	echo -e ""
-	echo -e '\E[1;32;49m'"\"$ERR_MSG\""
+	echo -e '\E[1;32m'"\"$ERR_MSG\""
 	echo -e ""
 	read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 	MenU
@@ -515,25 +515,25 @@ function imgur_upload_anonymous (){
     echo -e "################################################################################" >> "${PMSS_LOG}"
     echo -e "" >> "${PMSS_LOG}"
     printf "\033c"
-    echo -e '\E[1;32;49m'"DIRECT LINK"
-    echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"${URL}"
-    echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"${BASE_URL}m.${BASE_EXT}"
+    echo -e '\E[1;32m'"DIRECT LINK"
+    echo -e '\E[1;32m'"Original  : "'\E[0;32m'"${URL}"
+    echo -e '\E[1;32m'"Thumbnail : "'\E[0;32m'"${BASE_URL}m.${BASE_EXT}"
     echo -e ""
-    echo -e '\E[1;32;49m'"BBCODE LINK (FORUMS, MESSAGE BOARDS)"
-    echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"[img]${URL}[/img]"
-    echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"[url=${BASE_URL}][img]${BASE_URL}m.${BASE_EXT}[/img][/url]"
+    echo -e '\E[1;32m'"BBCODE LINK (FORUMS, MESSAGE BOARDS)"
+    echo -e '\E[1;32m'"Original  : "'\E[0;32m'"[img]${URL}[/img]"
+    echo -e '\E[1;32m'"Thumbnail : "'\E[0;32m'"[url=${BASE_URL}][img]${BASE_URL}m.${BASE_EXT}[/img][/url]"
     echo -e ""
-    echo -e '\E[1;32;49m'"MARKDOWN LINK (REDDIT, GITHUB)"
-    echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"[${SHORT_NAME}](${URL})"
-    echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"[${SHORT_NAME}](${BASE_URL}m.${BASE_EXT})"
+    echo -e '\E[1;32m'"MARKDOWN LINK (REDDIT, GITHUB)"
+    echo -e '\E[1;32m'"Original  : "'\E[0;32m'"[${SHORT_NAME}](${URL})"
+    echo -e '\E[1;32m'"Thumbnail : "'\E[0;32m'"[${SHORT_NAME}](${BASE_URL}m.${BASE_EXT})"
     echo -e ""
-    echo -e '\E[1;32;49m'"HTML LINK (WEBSITES, BLOGS)"
-    echo -e '\E[1;32;49m'"Original  : "'\E[0;32;49m'"<a href=${BASE_URL}><img src=${URL} title=${SHORT_NAME} /></a>"
-    echo -e '\E[1;32;49m'"Thumbnail : "'\E[0;32;49m'"<a href=${BASE_URL}><img src=${BASE_URL}m.${BASE_EXT} title=${SHORT_NAME} /></a>"
+    echo -e '\E[1;32m'"HTML LINK (WEBSITES, BLOGS)"
+    echo -e '\E[1;32m'"Original  : "'\E[0;32m'"<a href=${BASE_URL}><img src=${URL} title=${SHORT_NAME} /></a>"
+    echo -e '\E[1;32m'"Thumbnail : "'\E[0;32m'"<a href=${BASE_URL}><img src=${BASE_URL}m.${BASE_EXT} title=${SHORT_NAME} /></a>"
     echo -e ""
-    echo -e '\E[1;32;49m'"DELETE LINK"
-    echo -e '\E[1;32;49m'"Delete url: "'\E[0;32;49m'"${DEL_URL}"
-    echo -e '\E[1;32;49m'""
+    echo -e '\E[1;32m'"DELETE LINK"
+    echo -e '\E[1;32m'"Delete url: "'\E[0;32m'"${DEL_URL}"
+    echo -e '\E[1;32m'""
     read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
     MenU
 }
@@ -543,18 +543,18 @@ function upload_check (){
 	xdg-open "${NAME}" &> /dev/null
     else
 	echo -e ""
-	echo -e '\E[1;32;49m'"PMSS Is Unable To Open The Screenshot"
-	echo -e '\E[1;32;49m'"It Needs \"xdg-utils\" Package To Do So"
+	echo -e '\E[1;32m'"PMSS Is Unable To Open The Screenshot"
+	echo -e '\E[1;32m'"It Needs \"xdg-utils\" Package To Do So"
 	echo -e ""
     fi
     echo -e ""
-    echo -e '\E[1;32;49m'"Do You Want To Upload The Screenshot?"
+    echo -e '\E[1;32m'"Do You Want To Upload The Screenshot?"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter \"Y\" To Upload The Shot To imgur"
-    echo -e '\E[1;32;49m'"Enter \"D\" To Purge The Shot & Go Back"
-    echo -e '\E[1;32;49m'"Enter \"N\" To Go Back To The Main Menu"
+    echo -e '\E[1;32m'"Enter \"Y\" To Upload The Shot To imgur"
+    echo -e '\E[1;32m'"Enter \"D\" To Purge The Shot & Go Back"
+    echo -e '\E[1;32m'"Enter \"N\" To Go Back To The Main Menu"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter Your Choice: "
+    echo -e '\E[1;32m'"Enter Your Choice: "
     echo -e ""
     tput sgr0
     read -er Choice
@@ -562,12 +562,12 @@ function upload_check (){
 	"Y" | "y")
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Select The Preferred Image Upload Mode"
+	    echo -e '\E[1;32m'"Select The Preferred Image Upload Mode"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Enter \"A\" For Anonymous Image Upload"
-	    echo -e '\E[1;32;49m'"Enter \"U\" To Upload Image To Account"
+	    echo -e '\E[1;32m'"Enter \"A\" For Anonymous Image Upload"
+	    echo -e '\E[1;32m'"Enter \"U\" To Upload Image To Account"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Enter Your Choice: "
+	    echo -e '\E[1;32m'"Enter Your Choice: "
 	    echo -e ""
 	    tput sgr0
 	    read -er Choice
@@ -583,14 +583,14 @@ function upload_check (){
 		*)
 		    printf "\033c"
 		    echo -e ""
-		    echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Choice!!!"
+		    echo -e '\E[1;32m'"\"$Choice\" Is An Invalid Choice!!!"
 		    echo -e ""
-		    echo -e '\E[1;32;49m'"Correct Options To Choose Are From A-P"
+		    echo -e '\E[1;32m'"Correct Options To Choose Are From A-P"
 		    echo -e ""
-		    echo -e '\E[1;32;49m'"For Uploading Image Anonymously, Enter \"A\""
-		    echo -e '\E[1;32;49m'"To Upload Image To Your Account, Enter \"U\""
+		    echo -e '\E[1;32m'"For Uploading Image Anonymously, Enter \"A\""
+		    echo -e '\E[1;32m'"To Upload Image To Your Account, Enter \"U\""
 		    echo -e ""
-		    echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
+		    echo -e '\E[1;32m'"Got it? It Is Not That Hard You See"
 		    echo -e ""
 		    read -r -s -p $'Press Any Key To Continue..\n' -n1
 		    MenU
@@ -606,15 +606,15 @@ function upload_check (){
 	*)
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Choice!!!"
+	    echo -e '\E[1;32m'"\"$Choice\" Is An Invalid Choice!!!"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Correct Options To Choose Are From Y-D-N"
+	    echo -e '\E[1;32m'"Correct Options To Choose Are From Y-D-N"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"To Upload Image To imgur, Enter \"Y\""
-	    echo -e '\E[1;32;49m'"To Delete Captured Image, Enter \"D\""
-	    echo -e '\E[1;32;49m'"To Move Back To The Menu, Enter \"N\""
+	    echo -e '\E[1;32m'"To Upload Image To imgur, Enter \"Y\""
+	    echo -e '\E[1;32m'"To Delete Captured Image, Enter \"D\""
+	    echo -e '\E[1;32m'"To Move Back To The Menu, Enter \"N\""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
+	    echo -e '\E[1;32m'"Got it? It Is Not That Hard You See"
 	    echo -e ""
 	    read -rsp $'Press Any Key To Continue..\n' -n1
 	    MenU
@@ -628,12 +628,12 @@ function area_mouse (){
     NAME="${DIR}/${SHORT_NAME}"
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;32;49m'"Draw A Rectangle On The Screen By Click-Dragging Left Mouse Button"
-    echo -e '\E[1;32;49m'"And Release The Mouse Button Once You Have Selected The Area To Be"
-    echo -e '\E[1;32;49m'"Captured. Region Inside The Drawn Rectangle Will Be Shot By Script"
+    echo -e '\E[1;32m'"Draw A Rectangle On The Screen By Click-Dragging Left Mouse Button"
+    echo -e '\E[1;32m'"And Release The Mouse Button Once You Have Selected The Area To Be"
+    echo -e '\E[1;32m'"Captured. Region Inside The Drawn Rectangle Will Be Shot By Script"
     echo -e ""
-    echo -e '\E[1;32;49m'"Once The Screen Capture Mode Is Activated, Pressing Any Keys Will"
-    echo -e '\E[1;32;49m'"Abort The Screenshot. So Keep The Keyboard Silent In Capture Mode"
+    echo -e '\E[1;32m'"Once The Screen Capture Mode Is Activated, Pressing Any Keys Will"
+    echo -e '\E[1;32m'"Abort The Screenshot. So Keep The Keyboard Silent In Capture Mode"
     echo -e ""
     read -r -s -p $'Press Any Key To Activate Screen Capture Mode..\n' -n1
     PMSS_PID=$(xdotool getactivewindow)
@@ -646,7 +646,7 @@ function area_mouse (){
 	sleep 1
 	xdotool windowactivate "$PMSS_PID"
 	echo -e ""
-	echo -e '\E[1;32;49m'"Keyboard Key Was Pressed. Screenshot Aborted"
+	echo -e '\E[1;32m'"Keyboard Key Was Pressed. Screenshot Aborted"
 	echo -e ""
 	read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 	MenU
@@ -655,7 +655,7 @@ function area_mouse (){
 	sleep 1
 	xdotool windowactivate "$PMSS_PID"
 	echo -e ""
-	echo -e '\E[0;32;49m'"${SHORT_NAME}"'\E[1;32;49m'" Saved In "'\E[0;32;49m'"${DIR}"
+	echo -e '\E[0;32m'"${SHORT_NAME}"'\E[1;32m'" Saved In "'\E[0;32m'"${DIR}"
 	echo -e ""
 	upload_check
     fi
@@ -667,13 +667,13 @@ function window_focus (){
     NAME="${DIR}/${SHORT_NAME}"
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;32;49m'"Select The Screenshot Mode"
+    echo -e '\E[1;32m'"Select The Screenshot Mode"
     echo -e ""
-    echo -e '\E[1;32;49m'"Press \"B\" To Capture The Window Open Below PMSS Window"
-    echo -e '\E[1;32;49m'"Press \"C\" To Capture The Window Under The Mouse Cursor"
-    echo -e '\E[1;32;49m'"Press \"M\" To Manually Select The Window To Be Captured"
+    echo -e '\E[1;32m'"Press \"B\" To Capture The Window Open Below PMSS Window"
+    echo -e '\E[1;32m'"Press \"C\" To Capture The Window Under The Mouse Cursor"
+    echo -e '\E[1;32m'"Press \"M\" To Manually Select The Window To Be Captured"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter Your Choice: "
+    echo -e '\E[1;32m'"Enter Your Choice: "
     echo -e ""
     tput sgr0
     read -er Choice
@@ -689,8 +689,8 @@ function window_focus (){
 		sleep 1
 		xdotool windowactivate "$PMSS_PID"
 		echo -e ""
-		echo -e '\E[1;32;49m'"No Open Window Found Below PMSS"
-		echo -e '\E[1;32;49m'"Hence No Screenshot Is Captured"
+		echo -e '\E[1;32m'"No Open Window Found Below PMSS"
+		echo -e '\E[1;32m'"Hence No Screenshot Is Captured"
 		echo -e ""
 		read -r -s -p $'Press Any Key To Continue..\n' -n1
 		window_focus
@@ -699,7 +699,7 @@ function window_focus (){
 		sleep 1
 		xdotool windowactivate "$PMSS_PID"
 		echo -e ""
-		echo -e '\E[0;32;49m'"${SHORT_NAME}"'\E[1;32;49m'" Saved In "'\E[0;32;49m'"${DIR}"
+		echo -e '\E[0;32m'"${SHORT_NAME}"'\E[1;32m'" Saved In "'\E[0;32m'"${DIR}"
 		echo -e ""
 		upload_check
 	    fi
@@ -707,8 +707,8 @@ function window_focus (){
 	"C" | "c")
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Position The Mouse Cursor Over The Window To Capture"
-	    echo -e '\E[1;32;49m'"Don't Click Just Position The Cursor Over The Window"
+	    echo -e '\E[1;32m'"Position The Mouse Cursor Over The Window To Capture"
+	    echo -e '\E[1;32m'"Don't Click Just Position The Cursor Over The Window"
 	    echo -e ""
 	    read -r -s -p $'Press Any Key When You Are Ready..\n' -n1
 	    PMSS_PID=$(xdotool getactivewindow)
@@ -722,7 +722,7 @@ function window_focus (){
 	    sleep 1
 	    xdotool windowactivate "$PMSS_PID"
 	    echo -e ""
-	    echo -e '\E[0;32;49m'"${SHORT_NAME}"'\E[1;32;49m'" Saved In "'\E[0;32;49m'"${DIR}"
+	    echo -e '\E[0;32m'"${SHORT_NAME}"'\E[1;32m'" Saved In "'\E[0;32m'"${DIR}"
 	    echo -e ""
 	    upload_check
 	    ;;
@@ -730,7 +730,7 @@ function window_focus (){
 	    PMSS_PID=$(xdotool getactivewindow)
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Minimize Terminal And Bring The Window To Be Captured In Focus.."
+	    echo -e '\E[1;32m'"Minimize Terminal And Bring The Window To Be Captured In Focus.."
 	    echo -e ""
 	    scrot -u -d12 -b -c "${NAME}"
 	    RETVAL=$?
@@ -739,8 +739,8 @@ function window_focus (){
 		sleep 1
 		xdotool windowactivate "$PMSS_PID"
 		echo -e ""
-		echo -e '\E[1;32;49m'"Failed To Find A Focused Window"
-		echo -e '\E[1;32;49m'"Hence No Screenshot Is Captured"
+		echo -e '\E[1;32m'"Failed To Find A Focused Window"
+		echo -e '\E[1;32m'"Hence No Screenshot Is Captured"
 		echo -e ""
 		read -r -s -p $'Press Any Key To Continue..\n' -n1
 		window_focus
@@ -749,7 +749,7 @@ function window_focus (){
 		sleep 1
 		xdotool windowactivate "$PMSS_PID"
 		echo -e ""
-		echo -e '\E[0;32;49m'"${SHORT_NAME}"'\E[1;32;49m'" Saved In "'\E[0;32;49m'"${DIR}"
+		echo -e '\E[0;32m'"${SHORT_NAME}"'\E[1;32m'" Saved In "'\E[0;32m'"${DIR}"
 		echo -e ""
 		upload_check
 	    fi
@@ -757,15 +757,15 @@ function window_focus (){
 	*)
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Option!!!"
+	    echo -e '\E[1;32m'"\"$Choice\" Is An Invalid Option!!!"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Correct Options To Choose Are From B-C-M"
+	    echo -e '\E[1;32m'"Correct Options To Choose Are From B-C-M"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"To Capture The Window Open Below PMSS Window, Press \"B\""
-	    echo -e '\E[1;32;49m'"To Capture The Window Under The Mouse Cursor, Press \"C\""
-	    echo -e '\E[1;32;49m'"To Manually Select The Window To Be Captured, Press \"M\""
+	    echo -e '\E[1;32m'"To Capture The Window Open Below PMSS Window, Press \"B\""
+	    echo -e '\E[1;32m'"To Capture The Window Under The Mouse Cursor, Press \"C\""
+	    echo -e '\E[1;32m'"To Manually Select The Window To Be Captured, Press \"M\""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
+	    echo -e '\E[1;32m'"Got it? It Is Not That Hard You See"
 	    echo -e ""
 	    read -r -s -p $'Press Any Key To Continue..\n' -n1
 	    window_focus
@@ -779,12 +779,12 @@ function entire_area (){
     NAME="${DIR}/${SHORT_NAME}"
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;32;49m'"Select The Screenshot Mode"
+    echo -e '\E[1;32m'"Select The Screenshot Mode"
     echo -e ""
-    echo -e '\E[1;32;49m'"Press \"C\" For Clean Mode"
-    echo -e '\E[1;32;49m'"Press \"D\" For Dirty Mode"
+    echo -e '\E[1;32m'"Press \"C\" For Clean Mode"
+    echo -e '\E[1;32m'"Press \"D\" For Dirty Mode"
     echo -e ""
-    echo -e '\E[1;32;49m'"Enter Your Choice: "
+    echo -e '\E[1;32m'"Enter Your Choice: "
     echo -e ""
     tput sgr0
     read -er Choice
@@ -846,7 +846,7 @@ function entire_area (){
 	    sleep 1
 	    xdotool windowactivate "$PMSS_PID"
 	    echo -e ""
-	    echo -e '\E[0;32;49m'"${SHORT_NAME}"'\E[1;32;49m'" Saved In "'\E[0;32;49m'"${DIR}"
+	    echo -e '\E[0;32m'"${SHORT_NAME}"'\E[1;32m'" Saved In "'\E[0;32m'"${DIR}"
 	    echo -e ""
 	    upload_check
 	    ;;
@@ -854,28 +854,28 @@ function entire_area (){
 	    PMSS_PID=$(xdotool getactivewindow)
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Minimize Terminal & Any Open Window You Don't Wish To Capture.."
+	    echo -e '\E[1;32m'"Minimize Terminal & Any Open Window You Don't Wish To Capture.."
 	    echo -e ""
 	    scrot -d12 -c "${NAME}"
 	    printf "\033c"
 	    sleep 1
 	    xdotool windowactivate "$PMSS_PID"
 	    echo -e ""
-	    echo -e '\E[0;32;49m'"${SHORT_NAME}"'\E[1;32;49m'" Saved In "'\E[0;32;49m'"${DIR}"
+	    echo -e '\E[0;32m'"${SHORT_NAME}"'\E[1;32m'" Saved In "'\E[0;32m'"${DIR}"
 	    echo -e ""
 	    upload_check
 	    ;;
 	*)
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"\"$Choice\" Is An Invalid Option!!!"
+	    echo -e '\E[1;32m'"\"$Choice\" Is An Invalid Option!!!"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Correct Options To Choose Are From C-D"
+	    echo -e '\E[1;32m'"Correct Options To Choose Are From C-D"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"To Capture The Desktop Without Any Open Window, Press \"C\""
-	    echo -e '\E[1;32;49m'"To Capture The Desktop With Open-Active Window, Press \"D\""
+	    echo -e '\E[1;32m'"To Capture The Desktop Without Any Open Window, Press \"C\""
+	    echo -e '\E[1;32m'"To Capture The Desktop With Open-Active Window, Press \"D\""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Got it? It Is Not That Hard You See"
+	    echo -e '\E[1;32m'"Got it? It Is Not That Hard You See"
 	    echo -e ""
 	    read -r -s -p $'Press Any Key To Continue..\n' -n1
 	    entire_area
@@ -885,8 +885,8 @@ function entire_area (){
 
 function MenU (){
     export LC_ALL=C
-    type scrot >/dev/null 2>&1 || { printf "\033c"; echo -e ""; echo -e '\E[1;32;49m'"A required pmss dependency \"Scrot\" is not present."; echo -e '\e[1;32;49m'"\"Scrot\" is available for almost all linux distros."; echo -e '\e[1;32;49m'"Please install \"scrot\" using your package manager."; echo -e ""; tput sgr0; exit 1; }
-    type xdotool >/dev/null 2>&1 || { printf "\033c"; echo -e ""; echo -e '\E[1;32;49m'"A required pmss dependency \"xdotool\" is not present."; echo -e '\e[1;32;49m'"\"xdotool\" is available for almost all linux distros."; echo -e '\e[1;32;49m'"Please install \"xdotool\" using your package manager."; echo -e '\e[1;32;49m'"For more info please visit the website of \"xdotool\","; echo -e '\e[1;32;49m'"http://semicomplete.com/projects/xdotool"; echo -e ""; tput sgr0; exit 1; }
+    type scrot >/dev/null 2>&1 || { printf "\033c"; echo -e ""; echo -e '\E[1;32m'"A required pmss dependency \"Scrot\" is not present."; echo -e '\e[1;32m'"\"Scrot\" is available for almost all linux distros."; echo -e '\e[1;32m'"Please install \"scrot\" using your package manager."; echo -e ""; tput sgr0; exit 1; }
+    type xdotool >/dev/null 2>&1 || { printf "\033c"; echo -e ""; echo -e '\E[1;32m'"A required pmss dependency \"xdotool\" is not present."; echo -e '\e[1;32m'"\"xdotool\" is available for almost all linux distros."; echo -e '\e[1;32m'"Please install \"xdotool\" using your package manager."; echo -e '\e[1;32m'"For more info please visit the website of \"xdotool\","; echo -e '\e[1;32m'"http://semicomplete.com/projects/xdotool"; echo -e ""; tput sgr0; exit 1; }
     if type xdg-user-dir >/dev/null 2>&1; then
 	DIR_CHECK="$(xdg-user-dir PICTURES)"
 	if [ "${DIR_CHECK}" != "${HOME}" ]; then
@@ -903,18 +903,18 @@ function MenU (){
     ID_CLIENT=$(tr '\!-~' 'P-~\!-O' <<<"27a7g_h3ff562a4")
     declare -A codes_map
     printf "\033c"
-    echo -e '\E[1;32;49m'"** PMSS<>MENU *************************************************"
+    echo -e '\E[1;32m'"** PMSS<>MENU *************************************************"
     echo -e ""
-    echo -e '\E[1;32;49m'"** Select One Of The Following Options"
+    echo -e '\E[1;32m'"** Select One Of The Following Options"
     echo -e ""
-    echo -e '\E[1;32;49m'"** Enter \"E\" To Take The Screenshot Of The Entire Screen"
-    echo -e '\E[1;32;49m'"** Enter \"W\" To Take The Screenshot Of Window In Focus"
-    echo -e '\E[1;32;49m'"** Enter \"A\" To Take The Screenshot Of Area Selected By Mouse"
-    echo -e '\E[1;32;49m'"** Enter \"D\" To Empty Screenshots Directory"
-    echo -e '\E[1;32;49m'"** Enter \"L\" To Manage Upload Log"
-    echo -e '\E[1;32;49m'"** Enter \"Q\" To Exit"
+    echo -e '\E[1;32m'"** Enter \"E\" To Take The Screenshot Of The Entire Screen"
+    echo -e '\E[1;32m'"** Enter \"W\" To Take The Screenshot Of Window In Focus"
+    echo -e '\E[1;32m'"** Enter \"A\" To Take The Screenshot Of Area Selected By Mouse"
+    echo -e '\E[1;32m'"** Enter \"D\" To Empty Screenshots Directory"
+    echo -e '\E[1;32m'"** Enter \"L\" To Manage Upload Log"
+    echo -e '\E[1;32m'"** Enter \"Q\" To Exit"
     echo -e ""
-    echo -e '\E[1;32;49m'"***************************************************************"
+    echo -e '\E[1;32m'"***************************************************************"
     echo -e ""
     tput sgr0
     read -er Options
@@ -940,16 +940,16 @@ function MenU (){
 	*)
 	    printf "\033c"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"\"$Options\" Is An Invalid Option!!!"
+	    echo -e '\E[1;32m'"\"$Options\" Is An Invalid Option!!!"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"Correct Options To Choose Are From E-W-A-D-Q"
+	    echo -e '\E[1;32m'"Correct Options To Choose Are From E-W-A-D-Q"
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"For Screenshot Of The Entire Screen, Press \"E\" & Hit \"Enter\" Key"
-	    echo -e '\E[1;32;49m'"For Screenshot Of The Window In Focus, Press \"W\" & Hit \"Enter\" Key"
-	    echo -e '\E[1;32;49m'"For Screenshot Of Area Selected By Mouse, Press \"A\" & Hit \"Enter\" Key"
-	    echo -e '\E[1;32;49m'"To Empty Screenshots Directory, Press \"D\" & Hit \"Enter\" Key"
-	    echo -e '\E[1;32;49m'"To Manage The Upload Log, Press \"L\" & Hit \"Enter\" Key"
-	    echo -e '\E[1;32;49m'"To Exit From PMSS, Press \"Q\" & Hit \"Enter\" Key"
+	    echo -e '\E[1;32m'"For Screenshot Of The Entire Screen, Press \"E\" & Hit \"Enter\" Key"
+	    echo -e '\E[1;32m'"For Screenshot Of The Window In Focus, Press \"W\" & Hit \"Enter\" Key"
+	    echo -e '\E[1;32m'"For Screenshot Of Area Selected By Mouse, Press \"A\" & Hit \"Enter\" Key"
+	    echo -e '\E[1;32m'"To Empty Screenshots Directory, Press \"D\" & Hit \"Enter\" Key"
+	    echo -e '\E[1;32m'"To Manage The Upload Log, Press \"L\" & Hit \"Enter\" Key"
+	    echo -e '\E[1;32m'"To Exit From PMSS, Press \"Q\" & Hit \"Enter\" Key"
 	    echo -e ""
 	    read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
 	    MenU
