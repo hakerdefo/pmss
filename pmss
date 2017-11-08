@@ -242,7 +242,7 @@ function imgur_token_test (){
 	echo -e ""
 	echo -e '\E[1;32;49m'"PMSS Requires \"cURL\" To Upload To imgur"
 	echo -e '\E[1;32;49m'"Install \"curl\" Via Your Package-manager"
-	echo -e '\E[1;32;49m'"For extra info go to website of \"cURL\","
+	echo -e '\E[1;32;49m'"For Extra Info Go To Website Of \"cURL\","
 	echo -e '\E[1;32;49m'"https://curl.haxx.se/"
 	echo -e ""
 	read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
@@ -399,12 +399,12 @@ function setup_stage1 (){
 	    echo -e '\E[0;32;49m'"https://api.imgur.com/oauth2/authorize?client_id=CLIENT_ID&response_type=pin"
 	    echo -e ""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"imgur webpage will display you the following message,"
+	    echo -e '\E[1;32;49m'"imgur Webpage Will Display You The Following Message,"
 	    echo -e ""
 	    echo -e '\E[0;32;49m'"\"An application would like to connect to your account\""
 	    echo -e ""
 	    echo -e ""
-	    echo -e '\E[1;32;49m'"On this imgur page simply click on the \"allow\" button"
+	    echo -e '\E[1;32;49m'"On This imgur Page Simply Click On The \"allow\" Button"
 	    echo -e '\E[1;32;49m'"You Will Now Have \"Client ID\" \"Client Secret\" & \"PIN\""
 	    echo -e '\E[1;32;49m'"Save Them In A Text File As They'll Be Required Later"
 	    echo -e ""
@@ -451,7 +451,7 @@ function imgur_upload_anonymous (){
 	echo -e ""
 	echo -e '\E[1;32;49m'"PMSS Requires \"cURL\" To Upload To imgur"
 	echo -e '\E[1;32;49m'"Install \"curl\" Via Your Package-manager"
-	echo -e '\E[1;32;49m'"For extra info go to website of \"cURL\","
+	echo -e '\E[1;32;49m'"For Extra Info Go To Website Of \"cURL\","
 	echo -e '\E[1;32;49m'"https://curl.haxx.se/"
 	echo -e ""
 	read -rsp $'Press Any Key To Return To PMSS MENU..\n' -n1
@@ -540,7 +540,7 @@ function imgur_upload_anonymous (){
 
 function upload_check (){
     if type xdg-open >/dev/null 2>&1; then
-	xdg-open "${NAME}"
+	xdg-open "${NAME}" &> /dev/null
     else
 	echo -e ""
 	echo -e '\E[1;32;49m'"PMSS Is Unable To Open The Screenshot"
